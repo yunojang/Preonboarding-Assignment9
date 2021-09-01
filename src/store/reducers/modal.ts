@@ -1,6 +1,6 @@
 import { ModalTypes, ModalContent, ModalAction } from "../types/modal";
 
-interface State {
+export interface State {
   show: boolean;
   content?: ModalContent;
 }
