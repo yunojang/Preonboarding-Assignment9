@@ -1,15 +1,23 @@
 import { useSelector } from "react-redux";
 import { RootState } from "store/reducers";
-import Main from "./components/Main";
+import Todo from "components/Todo";
+import Modal from "components/Modal";
+import styled from "styled-components";
 
 function App() {
   const modal = useSelector((state: RootState) => state.modal);
 
   return (
-    <div className="App">
-      <Main />
-    </div>
+    <Container className="App">
+      <Todo />
+
+      {modal.show && modal.content && <Modal content={modal.content} />}
+    </Container>
   );
 }
+
+const Container = styled.div`
+  padding: 40px 0px;
+`;
 
 export default App;
