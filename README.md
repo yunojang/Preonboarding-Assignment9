@@ -2,7 +2,7 @@
 
 ## Demo Link
 
-Demo Page :
+Demo Page : [배포 링크](https://distracted-easley-bebcfd.netlify.app/)
 
 ## 프로젝트 개요
 
@@ -16,6 +16,6 @@ Demo Page :
 ## 실행 방법
 
 ```
-npm install
-npm start
+yarn install
+yarn start
 ```
