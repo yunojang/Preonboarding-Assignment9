@@ -1,11 +1,11 @@
 import React, { FC } from "react";
-import { ModalContent } from "store/types/modal";
+import ModalContent from "types/modal";
 
 interface Props {
   content: ModalContent;
 }
 
-const Modal: FC<Props> = ({ content }) => {
+const Modal: FC<Props> = () => {
   return <div></div>;
 };
 

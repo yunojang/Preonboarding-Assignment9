@@ -1,4 +1,5 @@
-import { ModalTypes, ModalContent, ModalAction } from "../types/modal";
+import { ModalTypes, ModalAction } from "./types/modal";
+import ModalContent from "types/modal";
 
 export function showModal(content: ModalContent): ModalAction {
   return {
@@ -7,7 +8,7 @@ export function showModal(content: ModalContent): ModalAction {
   };
 }
 
-export function closeModal() {
+export function closeModal(): ModalAction {
   return {
     type: ModalTypes.CLOSE_MODAL,
   };

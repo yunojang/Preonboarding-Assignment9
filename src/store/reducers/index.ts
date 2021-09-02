@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
-import todo from "./todo";
-import modal, { State as ModalState } from "./modal";
+import todo, { TodoState } from "./todo";
+import modal, { ModalState } from "./modal";
 
 export interface RootState {
   modal: ModalState;
+  todo: TodoState;
 }
 
 const rootReducer = combineReducers({ todo, modal });

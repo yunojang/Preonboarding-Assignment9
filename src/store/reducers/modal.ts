@@ -1,15 +1,19 @@
-import { ModalTypes, ModalContent, ModalAction } from "../types/modal";
+import { ModalTypes, ModalAction } from "../actions/types/modal";
+import ModalContent from "types/modal";
 
-export interface State {
+export interface ModalState {
   show: boolean;
   content?: ModalContent;
 }
 
-const INITIAL_STATE: State = {
+const INITIAL_STATE: ModalState = {
   show: false,
 };
 
-const modalReducer = (state = INITIAL_STATE, action: ModalAction): State => {
+const modalReducer = (
+  state = INITIAL_STATE,
+  action: ModalAction
+): ModalState => {
   switch (action.type) {
     case ModalTypes.SHOW_MODAL:
       return {
