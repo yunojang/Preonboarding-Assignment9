@@ -1,7 +1,10 @@
-import MAIN_COLOR, { DARK_COLOR } from "constant/color";
 import { FC } from "react";
+import { useDispatch } from "react-redux";
 import styled, { css } from "styled-components";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
+
+import { checkTodo, deleteTodo } from "store/actions/todo";
+import MAIN_COLOR, { DARK_COLOR } from "constant/color";
 
 interface Todo {
   id: number;
@@ -14,17 +17,29 @@ interface Props {
 }
 
 const TodoItem: FC<Props> = ({ todo }) => {
+  const dispatch = useDispatch();
+
+  const toggleCheck = (id: number) => {
+    dispatch(checkTodo(id));
+  };
+
+  const onDelete = (id: number) => {
+    dispatch(deleteTodo(id));
+  };
   return (
     <Item>
       <LeftBox>
-        <CheckSquare checked={todo.checked}>
+        <CheckSquare
+          checked={todo.checked}
+          onClick={() => toggleCheck(todo.id)}
+        >
           {todo.checked && <CheckOutlined />}
         </CheckSquare>
 
         <Content checked={todo.checked}>{todo.content}</Content>
       </LeftBox>
 
-      <DelButton>
+      <DelButton onClick={() => onDelete(todo.id)}>
         <CloseOutlined />
       </DelButton>
     </Item>

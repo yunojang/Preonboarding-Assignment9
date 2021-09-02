@@ -1,12 +1,17 @@
 import { FC } from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { RootState } from "store/reducers";
 
 interface Props {}
 
 const Remain: FC<Props> = () => {
+  const { todoList } = useSelector((state: RootState) => state.todo);
+  const remainCount = todoList.filter((todo) => !todo.checked).length;
+
   return (
     <Alert>
-      <span>n</span> items left
+      <span>{remainCount}</span> items left
     </Alert>
   );
 };
