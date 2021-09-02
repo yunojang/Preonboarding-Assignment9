@@ -26,6 +26,7 @@ const TodoItem: FC<Props> = ({ todo }) => {
   const onDelete = (id: number) => {
     dispatch(deleteTodo(id));
   };
+
   return (
     <Item>
       <LeftBox>
