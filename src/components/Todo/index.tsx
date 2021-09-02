@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
-import TodoCreate from "./TodoCreate";
+import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 import Remain from "./Remain";
 
@@ -12,7 +12,7 @@ const Todo: FC<Props> = () => {
   return (
     <TodoContainer>
       <Title>TODO LIST</Title>
-      <TodoCreate />
+      <TodoForm />
       <Remain />
       <TodoList />
     </TodoContainer>
