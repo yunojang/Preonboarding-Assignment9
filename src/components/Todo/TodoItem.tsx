@@ -55,6 +55,7 @@ const Item = styled.li`
   background: #f6f6f6;
   border-radius: 5px;
   font-size: 15px;
+  user-select: none;
 `;
 
 const LeftBox = styled.div`

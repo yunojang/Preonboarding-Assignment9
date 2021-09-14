@@ -6,17 +6,16 @@ import { RootState } from "store/reducers";
 import { createTodo } from "store/actions/todo";
 import { showModal } from "store/actions/modal";
 
-import Form from "./template/Form";
+import FormTemplate from "./template/Form";
 
 import Todo from "types/todo";
 import ModalContent from "types/modal";
 
-interface Props {}
-
-const TodoCreate: FC<Props> = (props) => {
+const TodoForm: FC = () => {
   const [input, setInput] = useState<string>("");
   const dispatch = useDispatch();
   const todo = useSelector((state: RootState) => state.todo);
+  const modal = useSelector((state: RootState) => state.modal);
 
   const getNextId = (): number => {
     return (
@@ -29,6 +28,10 @@ const TodoCreate: FC<Props> = (props) => {
 
   const onCreate = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (modal.show) {
+      return;
+    }
 
     try {
       if (input.length < 1) {
@@ -60,7 +63,7 @@ const TodoCreate: FC<Props> = (props) => {
   };
 
   return (
-    <TodoForm onSubmit={onCreate}>
+    <Form onSubmit={onCreate}>
       <input
         type="text"
         placeholder="해야할 일을 입력하세요"
@@ -68,12 +71,12 @@ const TodoCreate: FC<Props> = (props) => {
         onChange={onChangeInput}
       />
       <input type="submit" value="+" />
-    </TodoForm>
+    </Form>
   );
 };
 
-const TodoForm = styled(Form)`
+const Form = styled(FormTemplate)`
   margin-bottom: 20px;
 `;
 
-export default TodoCreate;
+export default TodoForm;

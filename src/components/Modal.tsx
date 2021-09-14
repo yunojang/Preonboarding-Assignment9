@@ -57,8 +57,8 @@ const ModalContainer = styled.div`
   position: relative;
   background: #fff;
   padding: 20px 30px;
-  animation: padeIn 0.2s cubic-bezier(0, 0, 0, 0.7),
-    slideUp 0.2s cubic-bezier(0, 0, 0, 0.7);
+  animation: padeIn 0.15s cubic-bezier(0, 0, 0, 1),
+    slideUp 0.15s cubic-bezier(0, 0, 0, 1);
 `;
 
 const Title = styled.h1`

@@ -33,6 +33,24 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     user-select: none;
   }
+
+  @keyframes  padeIn {
+    from {
+      opacity : 0;
+    }
+    to {
+      opacity : 1;
+    }
+  }
+
+  @keyframes  slideUp {
+    from {
+      transform : translateY(20px);
+    }
+    to {
+      transform : translateY(0px);
+    }
+  }
 `;
 
 export default GlobalStyle;
