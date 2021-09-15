@@ -14,9 +14,13 @@ interface Todo {
 
 interface Props {
   todo: Todo;
+  isDragging: boolean;
+  onDragStart: () => void;
+  onDragOver: () => void;
+  onDragEnd: () => void;
 }
 
-const TodoItem: FC<Props> = ({ todo }) => {
+const TodoItem: FC<Props> = ({ todo, ...props }) => {
   const dispatch = useDispatch();
 
   const toggleCheck = (id: number) => {
@@ -28,7 +32,7 @@ const TodoItem: FC<Props> = ({ todo }) => {
   };
 
   return (
-    <Item>
+    <Item draggable {...props}>
       <LeftBox>
         <CheckSquare
           checked={todo.checked}
@@ -47,12 +51,12 @@ const TodoItem: FC<Props> = ({ todo }) => {
   );
 };
 
-const Item = styled.li`
+const Item = styled.li<{ isDragging: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 15px;
-  background: #f6f6f6;
+  background: ${(props) => (props.isDragging ? "#e6e6e6" : "#f6f6f6")};
   border-radius: 5px;
   font-size: 15px;
   user-select: none;

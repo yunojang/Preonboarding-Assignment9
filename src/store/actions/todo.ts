@@ -27,3 +27,10 @@ export const deleteTodo = (id: number): TodoAction => {
     id,
   };
 };
+
+export const setTodo = (todoList: Todo[]): TodoAction => {
+  return {
+    type: TodoTypes.SET_TODO,
+    newTodoList: todoList,
+  };
+};

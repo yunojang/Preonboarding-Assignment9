@@ -17,6 +17,16 @@ export default function todoReducer(
     case TodoTypes.LOAD_TODO:
       return state;
 
+    case TodoTypes.SET_TODO:
+      if (!action.newTodoList) {
+        return state;
+      }
+
+      return {
+        ...state,
+        todoList: action.newTodoList,
+      };
+
     case TodoTypes.CREATE_TODO:
       let newTodo = Array.from(state.todoList);
 
