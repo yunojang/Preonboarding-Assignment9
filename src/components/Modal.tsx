@@ -1,11 +1,9 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { closeModal } from "store/actions/modal";
 import styled from "styled-components";
 import ModalContent from "types/modal";
 import MAIN_COLOR from "constant/color";
-
-const CLOSEABLE_CLASSNAME = "close";
 
 interface Props {
   content: ModalContent;
@@ -15,8 +13,22 @@ const Modal: FC<Props> = ({ content }) => {
   const { title, body } = content;
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const onKeyDown = (e: any) => {
+      if (e.key === "Escape") {
+        dispatch(closeModal());
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [dispatch]);
+
   const onClose = (e: any) => {
-    if (!e.target.classList.contains(CLOSEABLE_CLASSNAME)) {
+    if (!e.target.dataset.close) {
       return;
     }
 
@@ -24,14 +36,14 @@ const Modal: FC<Props> = ({ content }) => {
   };
 
   return (
-    <Dim onClick={onClose} className={CLOSEABLE_CLASSNAME}>
+    <Dim onClick={onClose} data-close>
       <ModalContainer>
         <Title>{title}</Title>
 
         {body}
 
         <ButtonContainer>
-          <ConfirmButton onClick={onClose} className={CLOSEABLE_CLASSNAME}>
+          <ConfirmButton onClick={onClose} data-close>
             확인
           </ConfirmButton>
         </ButtonContainer>
